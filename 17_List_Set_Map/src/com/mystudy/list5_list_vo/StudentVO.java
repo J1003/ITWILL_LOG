@@ -55,12 +55,15 @@ public class StudentVO {
 		this.avg = avg;
 	}
 
-
-//	@Override
-//	public String toString() {
-//		return "StudentVO [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", tot=" + tot
-//				+ ", avg=" + avg + "]";
-//	}
+	
+	// toString에 구현되어 있는 문자열을 전달받아서 Main 화면에 구현 가능
+	@Override
+	public String toString() {
+		return "StudentVO [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", tot=" + tot
+				+ ", avg=" + avg + "]";
+	}
+	
+	
 	public void computeTotAvg() {
 		tot = kor + eng + math;
 		avg = tot * 100 / 3 / 100.0;

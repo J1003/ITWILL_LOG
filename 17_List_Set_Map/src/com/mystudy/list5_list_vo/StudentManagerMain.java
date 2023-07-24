@@ -2,6 +2,7 @@ package com.mystudy.list5_list_vo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Vector;
 
 public class StudentManagerMain {
 
@@ -23,9 +24,15 @@ public class StudentManagerMain {
 		5. 전체 데이터 화면 출력
 		========================================== */
 		
+		
+		/// 문제1 --------
+		System.out.println("--- 문제1 ----");
 		StudentVO stu1 = new StudentVO("홍길동", 100, 90, 81);
+//		stu1.computeTotAvg();
 		StudentVO stu2 = new StudentVO("이순신", 95, 88, 92);
+//		stu2.computeTotAvg();
 		StudentVO stu3 = new StudentVO("김유신", 90, 87, 77);
+//		stu3.computeTotAvg();
 //		System.out.println(stu1.getName());
 //		System.out.println(stu1.toString());
 		
@@ -46,8 +53,6 @@ public class StudentManagerMain {
 		double avg2 = tot2 / 100 / 3 / 100.0;
 		double avg3 = tot3 / 100 / 3 / 100.0;
 		
-		
-		
 //		StudentVO student = list.get(0);
 ////		String name = student.getName();
 //		System.out.println(student.getName() + " " + student.getKor() + " " 
@@ -62,24 +67,100 @@ public class StudentManagerMain {
 //					+ student2.getEng() + " " + student2.getMath() + " " 
 //					+ tot3);
 		
-		
-		////// 개선된 for문
+		// 문제3 ---------
+		// !!!! 개선된 for문 !!!!
 		/// 위에꺼 정리하면 --------------------------
 		System.out.println("--- 문제3 ----");
 		System.out.println(" >> 정리하면 <<");
 		System.out.println("성명\t국어\t영어\t수학\t총점\t평균");
-		for (StudentVO simple : list) {
-			int tot = simple.getKor() + simple.getEng() + simple.getMath();
-			double avg = tot * 100 / 3 / 100.0;
-		    System.out.println(simple.getName() + " " + simple.getKor() + " " 
-		            + simple.getEng() + " " + simple.getMath() + " "
-		            + tot + " " + avg);
+		for (StudentVO vo : list) {
+//			int tot = simple.getKor() + simple.getEng() + simple.getMath();
+//			double avg = tot * 100 / 3 / 100.0;
+//			위에는 .computeTotAvg 선언 안 했을 때 for문 안에 써서 tot, avg 값 출력.
+//			vo.setTot(vo.getKor() + vo.getEng() + vo.getMath());
+			vo.computeTotAvg();
+			System.out.println(vo.getName() + "\t" + 
+			    		vo.getKor() + "\t" +
+			            vo.getEng() + "\t" + 
+			    		vo.getMath() + "\t" +
+			            vo.getTot() + "\t" +
+			    		vo.getAvg());
 		}
+		//맨 위에 stu1.computeTotAvg(); 때문에 .getTot()랑 .getAvg() 출력되는 거임!!!
 		
 //		System.out.println("성명\t국어\t영어\t수학\t\총점\t평균");
 		
 		System.out.println("--- 문제4 ----");
+		// 수정된 김유신 데이터만 출력
+		StudentVO kim = new StudentVO("김유신", 95, 87, 77);
+		list.set(2, kim);
+		kim.computeTotAvg();
 		
+		System.out.println(list.get(2));
+		
+		// 문제 5---------
+//		5. 전체 데이터 화면 출력
+		System.out.println("--- 문제5 ----");
+		for (StudentVO vo : list) {
+		    System.out.println(vo.getName() + "\t" + 
+		    		vo.getKor() + "\t" +
+		            vo.getEng() + "\t" + 
+		    		vo.getMath() + "\t" +
+		            vo.getTot() + "\t" +
+		    		vo.getAvg());
+		}
+		
+		
+		/////////////////////////////////////////////////////
+		System.out.println();
+		System.out.println("-------------");
+		System.out.println(">> 쌤 답변 <<");
+		// -- 쌤 답변 ----------
+		/* 더 간단하게 별도로 메소드 만들어놓고
+		   메소드 호출해서 데이터만 전달받아 화면 호출한 형식
+	    */
+		for (StudentVO student : list) {
+		printData(student);
+		}
+		System.out.println("---------");
+		System.out.println("4. 데이터 수정 -----");
+//		list.get(2).setKor(95);
+//		System.out.println(list.get(2));
+		// 위 처럼 하면 완전 (X)! 데이터를 찾아서 수정해라.
+		
+		// (중요)!! 문자열 비교할 때 .equals !!!!!!!!!!!!!
+		String name = "김유신";
+		int updateScore = 95;
+		for (StudentVO student : list) {
+			if ("김유신".equals(student.getName())) {
+				student.setKor(updateScore);
+				student.computeTotAvg();
+				printData(student);
+				break; // 이름이 중복되지 않으니까 브레이크.
+			}
+		}
+		System.out.println("------");
+		for (StudentVO student : list) {
+			if (name.equals(student.getName())) {
+				printData(student);
+				break;
+			}
+		}
+		
+		//5. 전체 데이터 화면 출력
+		System.out.println("===5. 전체 데이터 화면 출력 ==========");
+		for (StudentVO student : list) {
+			printData(student);
+		}
 	}
-
+//	static은 메인메소드에서 다이렉트로 호출하려고 쓰는 거임
+	static void printData(StudentVO vo) {
+		   System.out.println(vo.getName() + "\t" + 
+		    		vo.getKor() + "\t" +
+		            vo.getEng() + "\t" + 
+		    		vo.getMath() + "\t" +
+		            vo.getTot() + "\t" +
+		    		vo.getAvg());
+	}
+	
 }
