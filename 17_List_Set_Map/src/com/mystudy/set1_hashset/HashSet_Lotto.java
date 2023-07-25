@@ -38,7 +38,7 @@ public class HashSet_Lotto {
 	 	List<Integer> jungryul = new ArrayList<>(set);
 	 	
 	 	
-	 	// 쎔 답변 ---------------------------
+	 	// 쌤 답변 ---------------------------
 	 	System.out.println();
 	 	System.out.println("=== 쌤 답변 ===========");
 

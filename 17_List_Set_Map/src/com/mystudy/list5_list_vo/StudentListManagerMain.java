@@ -1,10 +1,8 @@
 package com.mystudy.list5_list_vo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
 
-public class StudentManagerMain {
+public class StudentListManagerMain {
 
 	public static void main(String[] args) {
 		/* (실습) List를 사용한 성적 처리
