@@ -14,6 +14,7 @@ public class GenericWildcardExam {
 		
 	public static void main(String[] args) {
 //		제네릭(Generic)의 대표문자(wildcard)
+//		컬렉션 클래스 또는 메소드를 정의할 때 사용할 데이터 타입을 정해주는 거임.
 //	     1. <?> : 모든 타입(객체) 자료형에 대한 대표문자를 의미
 //	     2. <? extends 자료형> : 자료형을 상속받은 자녀(sub) 클래스 타입 사용
 //	     3. <? super 자료형> : 자료형의 부모(super) 타입 사용      
