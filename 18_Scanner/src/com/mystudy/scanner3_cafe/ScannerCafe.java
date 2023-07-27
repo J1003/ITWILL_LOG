@@ -36,16 +36,20 @@ public class ScannerCafe {
 			income += totMoney; //총 매출액 구하기
 			
 			// 계산결과 출력 ---------------
-			System.out.println("=============");
-			System.out.println("입금액 : " + inMoney);
-			System.out.println("판매액 : " + totMoney);
-			System.out.println("잔액(거스름돈) : " + change);
-			System.out.println();
+			displayResult(inMoney, totMoney, change);
 		
 		}
 		
 	}
-
+	
+	private void displayResult(int inMoney, int totMoney, int change) {
+		System.out.println("=============");
+		System.out.println("입금액 : " + inMoney);
+		System.out.println("판매액 : " + totMoney);
+		System.out.println("잔액(거스름돈) : " + change);
+		System.out.println();
+	
+	}
 	private int computeMoney(int select, int count) {
 		int result = 0;
 		switch (select) {
@@ -61,8 +65,5 @@ public class ScannerCafe {
 		System.out.println("1.아메리카노  2.카페라떼  3.카페모카  4.과일주스   0.종료");
 		System.out.print("> 메뉴선택(1~4) : ");
 	}
-	
-	
-	
 
 }

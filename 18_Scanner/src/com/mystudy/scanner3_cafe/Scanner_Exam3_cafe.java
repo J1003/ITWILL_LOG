@@ -74,6 +74,58 @@ public class Scanner_Exam3_cafe {
 		int chg = pay - sales;
 		System.out.println("잔돈 : " + chg);
 		
+		
+		
+		// ChatGPT 답변 <<< ------------------------------------
+				System.out.println(" ㅡㅡㅡㅡㅡ> ChatGPT 답변 <ㅡㅡㅡㅡㅡㅡ");
+		
+		Scanner scanner = new Scanner(System.in);
+        String[] menuNames = {"아메리카노", "카페라떼", "카페모카", "과일주스"};
+        int[] prices = {3000, 3500, 4000, 5000};
+
+        while (true) {
+	        System.out.println("1. 아메리카노(3000원) 2. 카페라떼(3500원) 3. 카페모카(4000원) 4. 과일주스(5000원)");
+	        System.out.print("> 메뉴를 선택하세요(1~4, 0 to exit): ");
+	        int menuNumber = scanner.nextInt();
+	
+	        if (menuNumber == 0) {
+	            System.out.println("주문 프로그램을 종료합니다.");
+	            break;
+	        } else if (menuNumber < 1 || menuNumber > 4) {
+	            System.out.println("잘못된 메뉴 번호입니다. 다시 선택해주세요.");
+	            continue;
+	        }
+	
+	        System.out.print("> 주문수량: ");
+	        int quantity = scanner.nextInt();
+	
+	        if (quantity <= 0) {
+	            System.out.println("잘못된 수량입니다. 다시 입력해주세요.");
+	            continue;
+	        }
+	
+	        int price = prices[menuNumber - 1];
+	        System.out.print("> 입금액: ");
+	        int deposit = scanner.nextInt();
+	
+	        if (deposit < price * quantity) {
+	            System.out.println("입금액이 부족합니다. 다시 입력해주세요.");
+	            continue;
+	        }
+	
+	        int total = price * quantity;
+	        int change = deposit - total;
+	
+	        System.out.println("==================");
+	        System.out.println("입금액: " + deposit + "원");
+	        System.out.println("판매액(단가*수량): " + total + "원");
+	        System.out.println("잔액(잔돈): " + change + "원");
+        }
+
+        scanner.close();
+		System.out.println("-----------------"); 
+		
+		
 	
 		// 쌤 답변 <<< ------------------------------------
 		System.out.println(" ㅡㅡㅡㅡㅡ> 쌤 답변 <ㅡㅡㅡㅡㅡㅡ");
@@ -143,27 +195,27 @@ public class Scanner_Exam3_cafe {
 		menu.put("3.카페모카", 4000);
 		menu.put("4.과일주스", 5000);
 
- 	while (true) {
-	 	Scanner sc = new Scanner(System.in);
-	 	System.out.print("메뉴를 선택하세요(1~4) : ");
-	 	int menu = Integer.parseInt(sc.nextLine());
-	 	if(menu == 0) {
-		 	System.out.println("주문을 종료합니다.")
-		 	break;
-	 	} else {
-	 	cafe.get(menu);
-	 		System.out.print("주문수량 : ");
-	 	int num = sc.nextInt();
-	 		System.out.print("입금액 : ");
- 		int pay = sc.nextInt();
- 		sc.nextLine();
- 		if (pay <cafe.get(menu) * num) {
- 			System.out.print("금액이 부족합니다.");
- 			break;
- 			} else {
- 				System.out.print(
- 						"입금액 : " + pay + "\n판매액 : " + cafe.get(menu) * num + "\n잔돈 : " + (pay - cafe.get(menu) * num));
- 	
+	 	while (true) {
+		 	Scanner sc = new Scanner(System.in);
+		 	System.out.print("메뉴를 선택하세요(1~4) : ");
+		 	int menu = Integer.parseInt(sc.nextLine());
+		 	if(menu == 0) {
+			 	System.out.println("주문을 종료합니다.")
+			 	break;
+		 	} else {
+		 	cafe.get(menu);
+		 		System.out.print("주문수량 : ");
+		 	int num = sc.nextInt();
+		 		System.out.print("입금액 : ");
+	 		int pay = sc.nextInt();
+	 		sc.nextLine();
+	 		if (pay <cafe.get(menu) * num) {
+	 			System.out.print("금액이 부족합니다.");
+	 			break;
+	 			} else {
+	 				System.out.print(
+	 						"입금액 : " + pay + "\n판매액 : " + cafe.get(menu) * num + "\n잔돈 : " + (pay - cafe.get(menu) * num));
+	 	
  	
  	
  */
