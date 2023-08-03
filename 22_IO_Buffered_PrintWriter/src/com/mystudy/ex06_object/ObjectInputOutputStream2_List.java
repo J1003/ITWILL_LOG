@@ -22,43 +22,72 @@ public class ObjectInputOutputStream2_List {
 		// 파일에서 List 읽기 ---> List에 있는 VO 가져다 화면 출력
 		
 		StudentVO stu1 = new StudentVO("홍길동", 100, 90, 81);
+		stu1.setPhoneNo("010-1111-1111");
 		StudentVO stu2 = new StudentVO("김유신", 95, 85, 75);
+		stu2.setPhoneNo("010-2222-2222");
 		
+		System.out.println("stu1 : " + stu1);
+		System.out.println("stu2 : " + stu2);
 		
 		ArrayList<StudentVO> list = new ArrayList<StudentVO>();
-		list.add(new StudentVO("홍길동", 100, 90, 81));
-		list.add(new StudentVO("김유신", 95, 85, 75));
-		
+		list.add(stu1);
+		list.add(stu2);
 		System.out.println(list);
 		
+		// 파일에 List 쓰고, 파일에서 List 읽어와서 담긴 데이터 화면 출력
 		File file = new File("file/object_io_list.data");
 
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		
 		try {
+			// 객체 생성
 			fos = new FileOutputStream(file);
-			oos = new ObjectOutputStream(fos);
-			oos.writeObject(list);
+			oos = new ObjectOutputStream(fos); // ()안에 FileOutputStream(file) 넣어도 돼!
+			
+			// 파일에 List 쓰기
+			oos.writeObject(list); 
+			// 데이터를 모두 담아줄 수 있는 Object 타입을 쓴다.
+			// List Set Map이 박스 안에 담아놓는 역할을 한다.
+			// 그래서 굳이 .wirteObject 여러개 쓸 필요 없고 List를 담아주면 된다.
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		} finally {
+			try {
+				if (oos != null) oos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
-		// 파일에 읽어서 화면 출력
+		System.out.println("==== 파일에서 List 읽기( Input) ====");
+		
+		
 		ObjectInputStream ois = null;
 		
 		try {
 			ois = new ObjectInputStream(new FileInputStream(file));
 			
-			ArrayList<StudentVO> list1 = (ArrayList<StudentVO>) ois.readObject();
+			// 파일에 읽기 
+			ArrayList<StudentVO> readList = (ArrayList<StudentVO>) ois.readObject();
 			
-			System.out.println("코딩왕이 집에 간대");
-			System.out.println(list1.get(0));
-			System.out.println(list1.get(1));
-			System.out.println("꽤나 졸립다는구먼");
+			
+			
+			for (StudentVO vo : readList) {
+				System.out.print(vo.getName() + "\t");
+				System.out.println(vo.getTot() + "\t");
+				System.out.println(vo.getAvg());
+			}
+			System.out.println("-----------");
+			
+			for (int i = 0; i < readList.size(); i++) {
+				StudentVO vo = readList.get(i);
+				System.out.println(vo.getName() + " " + vo.getTot() + " " + vo.getAvg());
+			}
 		
 			
 		} catch (IOException e) {
@@ -66,12 +95,10 @@ public class ObjectInputOutputStream2_List {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
-			try {
+			try { 	// ois.close(); 먼저 작성 후 try~catch 하면 식 작성돼.
 				if (ois != null) ois.close();
 			} catch (IOException e) {}
 		}
-		
-		
 		
 	}
 

@@ -2,13 +2,43 @@ package com.mystudy.ex06_object;
 
 import java.io.Serializable;
 
+
+ /* 
+직렬화(Serialization) / 역질렬화(Deserialization)
+- 직렬화 : JVM 메모리에 있는 객체를 바이트스트림으로 변환하는 작업
+- 역질렬화 : 바이트스트림 데이터를 자바에 객체로 변환하는 작업
+
+데이터 전송을 위해서는 직렬화 처리가 가능해야 하는데, Serializable 형식만 가능하다.
+- Serializable 인터페이스를 구현하면 된다.
+
+데이터 직렬화 처리시 제외할 데이터는
+- transient 처리해주면 된다.
+
+transient 처리해도 전달되는 데이터 : static, final 처리된 데이터
+ */
+
+
+
+// Serializable 인터페이스 : 데이터 전송을 위한 Object 만들 때
+// Serializable 인터페이스를 구현해 주어야 전송할 수 있는 데이터 타입이 된다.
+// 전송에서 제외되는 데이터
+//        ㄴ transient 설정된 필드
+//        ㄴ static 필드
+
 public class StudentVO implements Comparable<StudentVO>, Serializable {
+	// <참고> serailVersionUID 가 다른 경우에 
+	// 데이터가 사용될 때 InvalidClassException 발생할 수 있다.
+	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 111L;
+	
 	private String name;
 	private int kor;
 	private int eng;
 	private int math;
 	private int tot;
 	private double avg;
+	
+	private String phoneNo;
 	
 	//생성자 마음대로 만들기
 	public StudentVO() {}
@@ -21,7 +51,7 @@ public class StudentVO implements Comparable<StudentVO>, Serializable {
 		this.math = math;
 		computeTotAvg();
 	}
-
+	
 	public StudentVO(String name, int kor, int eng, int math, int tot, double avg) {
 		super();
 		this.name = name;
@@ -33,6 +63,14 @@ public class StudentVO implements Comparable<StudentVO>, Serializable {
 	}
 
 	//메소드 마음대로 만들기
+	
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
 	public String getName() {
 		return name;
 	}
@@ -92,7 +130,7 @@ public class StudentVO implements Comparable<StudentVO>, Serializable {
 	@Override
 	public String toString() {
 		return "StudentVO [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", tot=" + tot
-				+ ", avg=" + avg + "]";
+				+ ", avg=" + avg + ", phoneNo=" + phoneNo + "]";
 	}
 
 	@Override
