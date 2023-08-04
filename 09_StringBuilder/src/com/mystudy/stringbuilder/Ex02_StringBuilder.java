@@ -5,6 +5,8 @@ public class Ex02_StringBuilder {
 	public static void main(String[] args) {
 		// StringBuffer & StringBuilder 기능이 똑같다!!
 		// StringBuilder 클래스
+		// StringBuilder는 Thread(쓰레드) 상에서는 안전하지 않다.
+		// --> synchronized 처리를 하면 오류처리가 가능하다!
 		// StringBuilder 데이터 문자열들을 수정하고 변경할 때 사용하는 자료형이다.
 		// append - StringBuilder자료형은 append 메서드를 사용하여 계속해서 문자열을 추가해 나갈 수 있다
 		// Builder는 여유공간

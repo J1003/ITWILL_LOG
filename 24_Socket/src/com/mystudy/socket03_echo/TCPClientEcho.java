@@ -24,9 +24,7 @@ public class TCPClientEcho {
 		// ------------------- 서버랑 순서가 반대!
 		// (추가) 보내는 메세지를 Scanner 글 사용, 화면에서 직접 입력하여 처리
 		// -------------------
-		
-		
-        System.out.println("!!! 클라이언트 시작 !!!");
+		System.out.println("!!! 클라이언트 시작 !!!");
         Scanner scanner = new Scanner(System.in);
 
         Socket socket = null;
@@ -44,19 +42,24 @@ public class TCPClientEcho {
             OutputStream os = socket.getOutputStream();
             pw = new PrintWriter(os, true); // Use true to autoflush the PrintWriter
             br = new BufferedReader(new InputStreamReader(is));
-            
-            
-           
-            String msg1 = "체력 관리 좀 하면서 공부합시다!";
-            pw.println(msg1);
-            pw.println("안녕?");
-            pw.println("점심시간 이후가 제일 졸려 안 그러니?");
-            pw.println(); // Sending an empty line to indicate the end of the message
 
-            // Read the response from the server line by line
-            String response;
-            while ((response = br.readLine()) != null) {
-                System.out.println("서버 응답: " + response);
+            // Start the while loop for continuous communication
+            while (true) {
+                System.out.print("나 : ");
+                String msg = scanner.nextLine();
+                if (msg.equalsIgnoreCase("exit")) {
+                    // If the user enters "exit", terminate the loop and close the connection
+                    break;
+                }
+
+                pw.println(msg);
+
+                // Read the response from the server line by line
+                String response;
+                while ((response = br.readLine()) != null) {
+                    System.out.println("서버 응답: " + response);
+                    break; // Exit the inner loop after reading one line of response
+                }
             }
 
         } catch (IOException e) {
