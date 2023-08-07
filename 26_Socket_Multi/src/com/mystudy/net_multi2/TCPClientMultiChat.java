@@ -20,11 +20,11 @@ public class TCPClientMultiChat {
 			socket = new Socket("192.168.18.31", 10000);
 			System.out.println(">> 서버 접속 완료");
 			
-			//메시지 보내기 쓰레드 생성(쓰기전용)
+			//Output 전용 : 메시지 보내기 쓰레드 생성(쓰기전용)
 			ClientSender clientSender = new ClientSender(socket);	
 			clientSender.start();
 			
-			//메시지 받기 쓰레드 생성(읽기전용)
+			//Input 전용 : 메시지 받기 쓰레드 생성(읽기전용)
 			ClientReceiver clientReceiver = new ClientReceiver(socket);	
 			clientReceiver.start();
 			
@@ -67,6 +67,8 @@ public class TCPClientMultiChat {
 			Scanner scan = new Scanner(System.in);
 			
 			try {
+				// (개인적 실습) IP주소 대신 별칭을 입력받아서  사용
+				// 
 				while (true) {
 					// 쓰기 --------------
 					System.out.print("전송 메시지 입력 : ");
@@ -100,7 +102,7 @@ public class TCPClientMultiChat {
 			// 메세지 받아서 화면 출력
 			while (true) {
 				try {
-					System.out.println(in.readUTF());
+					System.out.println(in.readUTF()); //읽은 메세지 그대로 화면출력
 				} catch (IOException e) {
 					//e.printStackTrace();
 					System.out.println("[예외발생]" + e.getMessage());

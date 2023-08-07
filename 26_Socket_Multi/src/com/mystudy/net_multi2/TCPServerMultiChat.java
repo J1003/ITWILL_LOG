@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class TCPServerMultiChat {
 	private HashMap<String, DataOutputStream> clients;
-	
+
 	public static void main(String[] args) {
 		System.out.println("==== main() 시작 =======");
 		new TCPServerMultiChat().serverStart();
@@ -40,18 +40,18 @@ public class TCPServerMultiChat {
 			server = new ServerSocket(10000);
 			
 			while (true) {
-				System.out.println(">> 접속 대기중~~~" 
-							+ InetAddress.getLocalHost().getHostAddress()
-							+ ":" + server.getLocalPort());
+				System.out.println(">> 접속 대기중~~~ " 
+						+ InetAddress.getLocalHost().getHostAddress()
+						+ ":" + server.getLocalPort());
 				
 				Socket socket = server.accept();
-				System.out.println("사용자가 접속되었습니다" 
-							+ socket.getRemoteSocketAddress());
+				System.out.println("사용자가 접속되었습니다 - " 
+						+ socket.getRemoteSocketAddress());
 				
 				// 접속된 클라이언트(사용자)에 대한 처리 - 쓰레드 생성(읽기전용)
 				System.out.println(":: 접속유저 읽기 전용 쓰레드 만들었지롱!");
 				ServerReceiver thread = new ServerReceiver(socket);
-				thread.start(); // 쓰레드로 동작시키기
+				thread.start(); //쓰레드로 동작시키기
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class TCPServerMultiChat {
 
 		public ServerReceiver(Socket socket) {
 			this.socket = socket;
-			try {
+			try {	//받은 메세지를 보내기 위한 목적으로 output객체도 같이 작성
 				in = new DataInputStream(socket.getInputStream());
 				out = new DataOutputStream(socket.getOutputStream());
 			} catch (IOException e) {
@@ -77,16 +77,17 @@ public class TCPServerMultiChat {
 
 		@Override
 		public void run() {
-			// 생성될때 : 필드에 사용자 명단(clients)에 추가
-			// 종료될때 : 필드에 사용자 명단(clients)에서 제외(삭제) 처리
+			// 생성될때 : 필드에 접속자명단(필드 clients)에 등록(추가)
+			// 종료될때 : 필드에 접속자명단(필드 clients)에 제외(삭제)
 			// 메시지 받고, 받은 메시지 전체에게 전달
 			System.out.println(">>> 읽기 전용 쓰레드 시작 -----");
 			try {
 				// 사용자 등록 작업
 				name = socket.getInetAddress().getHostAddress();
-				clients.put(name, out);
+				clients.put(name, out); //접속자 정보 등록
 				
 				while (true) {
+					// 메세지 읽고 화면 출력
 					String msg = in.readUTF();
 					if (msg == null || "exit".equalsIgnoreCase(msg)) {
 						break;
@@ -94,20 +95,36 @@ public class TCPServerMultiChat {
 					System.out.println(name + "> " + msg);
 					
 					//접속자 전원에게 메시지 일괄 전송하기
-					sendToAll(msg);
+					sendToAll(name + "] " + msg);
 				}
 			} catch (IOException e) {
 				//e.printStackTrace();
 				System.out.println("[예외발생] " + e.getMessage());
 			} finally {
 				System.out.println(socket.getInetAddress().getHostAddress() + "> 클라이언트 종료");
+				// 종료할 때 접속자 명단에서 제외(clients에서 삭제)
+				clients.remove(name);
+				// 삭제되었으면 메세지 입력 및 출력
+				String outMsg = "<" + name + ">님이 나갔습니다.";
+				sendToAll(outMsg);
+				System.out.println(outMsg);
 			}
 		}
 		
-		//접속자 전원에게 메시지 일괄 전송하기
 		private void sendToAll(String msg) {
-			
+			//접속자 전원에게 메시지 일괄 전송하기
+			// clients.values()하면 ouput객체를 가져올 수 있다.
+			for (DataOutputStream out : clients.values()) {
+				try {
+					out.writeUTF(msg);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		
+		// (개인적 실습) 전체메세지 : 내가 보낸 메세지는 받지 않도록 처리
+	
 	}
 	
 } //end class
