@@ -42,7 +42,8 @@ public class Ex02_String_method {
 		System.out.println("str : " + str);
 		
 		
-		System.out.println("str.contains(\"Java\") : " + str.contains("Java"));//특정 문자열이 있냐 없냐 할 때 : contains
+		System.out.println("str.contains(\"Java\") : " + str.contains("Java"));
+		//특정 문자열이 있냐 없냐 할 때 : contains
 		
 		
 		System.out.println("---- indexOf() : 문자(문자열) 위치값 확인 ----");
@@ -100,7 +101,8 @@ public class Ex02_String_method {
 		// String.substring(int beginIndex, int endIndex)
 		// beginIndex : 부터(포함)
 		// endIndex : end 이전까지(불포함)
-		System.out.println("str.substring(0, str.length()) : " + str.substring(0, str.length())); // 전체 데이터! 0부터 
+		System.out.println("str.substring(0, str.length()) : " + str.substring(0, str.length())); 
+		// 전체 데이터! 0부터 
 		System.out.println("str.substring(0, 8) : " + str.substring(0, 8)); // 0부터(맨앞에서부터) 8이전까지
 		
 		// 뒤에서 5개 문자만 사용.

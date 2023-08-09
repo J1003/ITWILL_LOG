@@ -26,7 +26,8 @@ public class Ex04_String_array {
 		
 		//// 방식 1 ////
 		for (int i = 0; i < names.length; i++) {
-			System.out.println(i + " : " + names[i] + " - " + names[i].length()); //+ " - " + names[i] --> 데이터 크기를 알고 싶을 때
+			System.out.println(i + " : " + names[i] + " - " + names[i].length()); 
+			//+ " - " + names[i] --> 데이터 크기를 알고 싶을 때
 		}
 		System.out.println("-----");
 		

@@ -130,7 +130,8 @@ public class Ex04_String_array_exam {
 		int lastIndex = names.length - 1;
 		for (int baseIdx = 0; baseIdx < names.length - 1; baseIdx++) { //lenth -1 : 마지막 데이터
 			for (int i = baseIdx + 1; i < names.length; i++) {
-				if (names[baseIdx].equalsIgnoreCase(names[i])) { //IgnoreCase 대소문자 구분 없이 equals 같이 뽑는다. // equals만 쓰면 구분이 된다.
+				if (names[baseIdx].equalsIgnoreCase(names[i])) { 
+					//IgnoreCase 대소문자 구분 없이 equals 같이 뽑는다. // equals만 쓰면 구분이 된다.
 					System.out.println(baseIdx + ":" + names[baseIdx]
 							+ " = " + i + ":" + names[i]);
 				}
