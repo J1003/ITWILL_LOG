@@ -50,14 +50,6 @@ public class Ex01_plusplus {
 		System.out.println("num : " + num);
 		System.out.println("----");
 		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }
