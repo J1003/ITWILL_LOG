@@ -52,7 +52,9 @@ public class Car {
 	void dispData() { //disp = display
 		System.out.println("--- 자동차 정보 ---");
 		System.out.println("자동차명 : " + name); //Car.java에서 name 변수에 '마이카'로 지정되어 있음.
-		System.out.println("모델명 : " + model); //값을 설정 안 해주면??? 초기값 세팅이 되어 있다! 이렇게--> int,String etc 참조형데이터라면? - null, float/double - 0.0, boolean - false로 만들어진다. 
+		System.out.println("모델명 : " + model); 
+		//값을 설정 안 해주면??? 초기값 세팅이 되어 있다! 
+		//이렇게--> int,String etc 참조형데이터라면? - null, float/double - 0.0, boolean - false로 만들어진다. 
 		System.out.println("색상명 : " + color);
 		System.out.println("차량길이 : " + CAR_LENGTH);
 		System.out.println("차량폭 : " + CAR_WIDTH);

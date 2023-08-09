@@ -9,7 +9,9 @@ public class CarMain {
 		// car1.CAR_LENGTH = 400; <- (컴파일 오류) 파이널 변수값 수정 못함.
 		
 		System.out.println("자동차명 : " + car1.name); //Car.java에서 name 변수에 '마이카'로 지정되어 있음.
-		System.out.println("모델명 : " + car1.model); //값을 설정 안 해주면??? 초기값 세팅이 되어 있다! 이렇게--> int,String etc 참조형데이터라면? - null, float/double - 0.0, boolean - false로 만들어진다. 
+		System.out.println("모델명 : " + car1.model); 
+		//값을 설정 안 해주면??? 초기값 세팅이 되어 있다! 
+		//이렇게--> int,String etc 참조형데이터라면? - null, float/double - 0.0, boolean - false로 만들어진다. 
 		System.out.println("색상명 : " + car1.color);
 		System.out.println("차량길이 : " + car1.CAR_LENGTH);
 		System.out.println("차량폭 : " + car1.CAR_WIDTH);
