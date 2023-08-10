@@ -108,11 +108,11 @@ public class BankATM {
     ////////////////////////////////////////////////
     //-----------     쌤 답변      -------------//////
     
-    /*
-	private int money; //통장계좌 금액
+   
+	private int money1; //통장계좌 금액
 	private Scanner scan = new Scanner(System.in);
 
-	public void startBank() {
+	public void startBank1() {
 		System.out.println(">>> 어서오세요(ATM 사용)");
 		while (true) {
 			int select = runningATM();
@@ -179,7 +179,7 @@ public class BankATM {
 			System.out.print(">입금액 : ");
 			money += Integer.parseInt(scan.nextLine());
 			break;
-		} money (Exception e) {
+		} catch (Exception e) {
 			System.out.println("[예외발생] 잘못된 값이 입력되었습니다. "
 					+ "숫자(0~9) 숫자만 입력하세요.");
 		}
@@ -192,10 +192,6 @@ public class BankATM {
 		System.out.println("------------------------------");
 		System.out.print(">작업선택 : ");
 	}
-
-	*/
-	
-	
 }
 
 
