@@ -65,13 +65,13 @@ public class Ex02_if_else {
 		if (score >= 90 && score <= 100 ) {
 			result2 = "수";
 			System.out.println(name + " : 수 " );
-		} else if (score >= 80 && score >= 89) {
+		} else if (score >= 80 && score <= 89) {
 			System.out.println(name + ": 우 ");
-		} else if (score >= 70 && score > 79) {
+		} else if (score >= 70 && score <= 79) {
 			System.out.println(name + ": 미 ");
-		} else if (score >= 60 && score > 69) {
+		} else if (score >= 60 && score <= 69) {
 			System.out.println(name + ": 양 ");
-		} else if (score >= 0 && score > 59) {
+		} else if (score >= 0 && score <= 59) {
 			System.out.println(name + ": 가 ");
 		}
 		
