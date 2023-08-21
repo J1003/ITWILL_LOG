@@ -1,5 +1,5 @@
 -- 서브(SUB QUERY) : SQL문 내부에 있는 SQL문
--- SQL(SELECT, INSERT, UPDATE, DELETE)문 내에 있는 커ㅜ리문
+-- SQL(SELECT, INSERT, UPDATE, DELETE)문 내에 있는 쿼리문
 ----------------------
 
 -- <FROM 문장 내에 서브쿼리>
