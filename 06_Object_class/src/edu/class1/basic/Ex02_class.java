@@ -1,6 +1,6 @@
 package edu.class1.basic;
 
-//OOP (Object-Oriented Programming) - 객체 지향 프로그래밍.
+// OOP (Object-Oriented Programming) - 객체 지향 프로그래밍.
 // 클래스 선언부
 // 클래스 내부에 작성하는 내용 : 변수선언, 생성자, 메소드 선언.
 public class Ex02_class {
