@@ -56,13 +56,5 @@ public class Ex03_method {
 	String method4 (String param) { //param 파라미터
 		System.out.println("파라미터 O, return 값 O");
 		return "파라미터 O, return 값 O"; 
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
