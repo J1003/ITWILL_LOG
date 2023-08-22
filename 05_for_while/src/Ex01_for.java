@@ -26,7 +26,9 @@ public class Ex01_for {
 		}
 		System.out.println("--------------");
 		
-		for (int i = 1; i <= 10; i = i += 2) {
+		// (참고) i += 1 / i = i + 1 / i = i += 1 
+		
+		for (int i = 1; i <= 10; i = i + 2) {
 			System.out.println("*");
 		}
 		//================================
