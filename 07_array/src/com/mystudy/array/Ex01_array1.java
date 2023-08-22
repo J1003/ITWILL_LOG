@@ -20,8 +20,9 @@ public class Ex01_array1 {
 		System.out.println("arr[0] : " + arr[0]);
 		
 		//int index = 0;
-		for (int i = 1; i < 5; i++) { // i <= 5 or i <= 4 말고! i < 5 이렇게 쓰자!
-										// 위에 < 하는 이유는 데이터 개수를 확인하기 위함임!
+		for (int i = 1; i < 5; i++) { 
+		     // i <= 5 or i <= 4 말고! i < 5 이렇게 쓰자!
+		     // 위에 < 하는 이유는 데이터 개수를 확인하기 위함임!
 		     //System.out.println(arr[index++]); <--이렇게 써도 되지만 더 간결하게해보자!
 		     System.out.println(arr[i]); 
 		     //System.out.println(i + ": " + arr[i]); 인덱스 번호랑 같이 알고 싶을 때.
