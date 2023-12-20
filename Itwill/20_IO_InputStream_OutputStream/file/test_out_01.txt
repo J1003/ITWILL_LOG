@@ -1,3 +1,0 @@
-HELLOHello Java!
-Hello Java!
-Java
